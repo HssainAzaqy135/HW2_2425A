@@ -15,7 +15,15 @@ std::string Pirate::getName(){
 }
 
 
+void Pirate::setBounty(const int& bounty) {
+    this->bounty = bounty;
+}
+int Pirate::getBounty() {
+    return bounty;
+}
+
 std::ostream &operator<<(std::ostream &os, const Pirate &pirate){
     os << pirate.name;
+    os << pirate.bounty;
     return os;
 }
