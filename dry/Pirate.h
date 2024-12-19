@@ -5,20 +5,21 @@
 
 using std::string;
 
-class Pirate {
+class Pirate
+{
 private:
     string name;
     int bounty;
 
 public:
-    Pirate():name(""),bounty(0){}
-    Pirate(const string &name,const int& bounty):name(name),bounty(bounty){}
-    Pirate(const string& name);
+    Pirate() : name(""), bounty(0) {} // To fix compilation error
+    Pirate(const string &name, const int &bounty) : name(name), bounty(bounty) {}
+    Pirate(const string &name);
 
     ~Pirate() = default;
 
-    void setName(const string& name);
-    void setBounty(const int& bounty);
+    void setName(const string &name);
+    void setBounty(const int &bounty);
     int getBounty();
     string getName();
 
