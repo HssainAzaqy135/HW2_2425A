@@ -197,7 +197,7 @@ Matrix Matrix::rotateCounterClockwise() const {
     return this->rotateClockwise().rotateClockwise().rotateClockwise();
 }
 
-double Matrix::CalcFrobeniusNorm(Matrix& mat) {
+double Matrix::CalcFrobeniusNorm(const Matrix& mat) {
     int sum = 0;
     for (int i = 0; i < mat.width * mat.length; ++i) {
         sum += mat.nums[i] * mat.nums[i];

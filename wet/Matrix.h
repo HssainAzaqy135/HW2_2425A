@@ -46,7 +46,7 @@ public:
 
     Matrix transpose() const;
 
-    static double CalcFrobeniusNorm(Matrix& mat);
+    static double CalcFrobeniusNorm(const Matrix& mat);
 
     friend bool operator==(const Matrix& mat1, const Matrix& mat2);
     //One matrix one scaler
