@@ -30,7 +30,14 @@ bool Matrix::isCompatibleDims(int width1, int width2, int length1, int length2) 
     }
     return false;
 }
+
+void Matrix::swap(int& num1, int& num2) {
+    int temp = num1;
+    num1 = num2;
+    num2 = temp;
+}
 //-----------------------------------------------------------------------------
+//Operators
 std::ostream& operator<<(std::ostream& mos, const Matrix& mat) {
     for (int i = 0; i < mat.length; ++i) {
         for (int j = 0; j < mat.width; ++j) {
@@ -49,7 +56,7 @@ Matrix& Matrix::operator=(const Matrix& mat) {
     width = mat.width;
     length = mat.length;
     int *temp = new int[width * length];
-    delete[] this->nums;
+    delete[] nums;
     for (int i = 0; i < width * length; ++i) {
         temp[i] = mat.nums[i];
     }
@@ -163,7 +170,7 @@ Matrix operator*(const Matrix& mat1, const Matrix& mat2){
 }
 
 //-----------------------------------------------------------------------------
-
+// Special functions
 Matrix Matrix::transpose() const {
     Matrix ret(width, length);
     for (int i = 0; i < length; ++i) {
@@ -196,14 +203,6 @@ double Matrix::CalcFrobeniusNorm(Matrix& mat) {
         sum += mat.nums[i] * mat.nums[i];
     }
     return sqrt(sum);
-}
-
-//-----------------------------------------------------------------------------
-
-void Matrix::swap(int& num1, int& num2) {
-    int temp = num1;
-    num1 = num2;
-    num2 = temp;
 }
 
 //-----------------------------------------------------------------------------

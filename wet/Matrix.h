@@ -7,6 +7,7 @@
 
 
 class Matrix {
+private:
     int width;
     int length;
     int* nums = new int[width * length];
