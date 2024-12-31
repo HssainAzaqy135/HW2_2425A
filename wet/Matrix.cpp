@@ -7,6 +7,10 @@ using std::endl;
 Matrix::Matrix() : width(0), length(0), nums(nullptr) {};
 
 Matrix::Matrix(int length, int width, int num_init) : width(width), length(length), nums(new int[width * length]) {
+    if(length == 0 || width == 0){
+        this->length = 0;
+        this->width = 0;
+    }
     for (int i = 0; i < width * length; ++i) {
         nums[i] = num_init;
     }
@@ -38,6 +42,7 @@ void Matrix::swap(int& num1, int& num2) {
 }
 //-----------------------------------------------------------------------------
 //Operators
+
 std::ostream& operator<<(std::ostream& mos, const Matrix& mat) {
     for (int i = 0; i < mat.length; ++i) {
         for (int j = 0; j < mat.width; ++j) {
@@ -183,13 +188,13 @@ Matrix Matrix::transpose() const {
 }
 
 Matrix Matrix::rotateClockwise() const {
-    Matrix ret = this->transpose();
-    for (int i = 0; i < width / 2; ++i) {
-        for (int j = 0; j < length; ++j) {
-            swap(ret(i,j), ret(i, width - j - 1));
+    Matrix ret(*this);
+    ret = ret.transpose();
+    for (int j = 0; j < ret.width / 2; ++j) {
+        for (int i = 0; i < ret.length; ++i) {
+            swap(ret(i,j), ret(i, ret.width - j - 1));
         }
     }
-
     return ret;
 }
 
